@@ -10,7 +10,8 @@ Kot zanimivost bom analiziral, še razliko med višino prestopov in dejanskimi c
 
 Podatki bodo v obliki CSV in HTML.
 
-Tabele:
+#Tabele:
+
 1.TABELA: GIBANJE višine NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
 
 - stoplci: sezona, starost igralca ob prestopu, klub odhoda, klub prihoda, cena
