@@ -10,7 +10,7 @@ Kot zanimivost bom analiziral, še razliko med višino prestopov in dejanskimi c
 
 Podatki bodo v obliki CSV in HTML.
 
-#Tabele:
+# Tabele:
 
 1.TABELA: GIBANJE VIŠINE NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
 
