@@ -2,10 +2,34 @@
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
-## Tematika
+## Analiza nogometnega trga in prihodki klubov
+Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev, razporeditev plač igralcev po klubih italijanske lige ( Gazette dello Sport je namreč edini časopis, ki izda zanseljive letne plače igralcev v italijanski ligi) in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
+Poskušal bom ugotoviti trende, kako spreminjanje tržnih vrednosti igralcev, spreminjanje višin prestopnih klavzul igralcev vpliva na prihodke klubov in obnašanje nogometnega trga,  poleg tega pa bi rad ugotovil vzorce razporeditve plač (v italijanski ligi ; kdo zasluži največ, kje je procentualno skoncentriranega največ denarja v odvisnosti od različnih parametrov(narodnost, položaj igranja, starost...).
+Kot zanimivost bom analiziral, še razliko med višino prestopov in dejanskimi cenami igralcev ob prestopu(cena vrednotena na Transfermarktu).
+Podatki bodo v obliki CSV in HTML.
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Tabele:
+1. TABELA: GIBANJE višine NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
+stoplci: sezona, starost igralca ob prestopu, klub odhoda, klub prihoda, cena
+
+2. TABELA: GIBANJE TRŽNIH CEN IGRALCEV SKOZI LETA:
+stolpci: leto, starost, pozicija, klub, narodnost
+
+
+3.TABELA: PLAČE ITALIJANSKIH IGRALCEV SKOZI LETA:
+stolpci: klub, narodnost, starost, pozicija, leto
+
+kot zanimivost:
+4.TABELA: Razlika med prestopno ceno in tržno ceno igralca:
+stolpci: leto, tržna cena, prestopna cena, razlika, klub odhoda, klub prihoda
+
+
+
+Viri:
+- https://www.transfermarkt.com/statistik/transferrekorde
+- https://en.wikipedia.org/wiki/Deloitte_Football_Money_League#2015.E2.80.9316
+- https://www.transfermarkt.com/statistik/transfererloese
+- http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-chart/
 
 ## Program
 
