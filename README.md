@@ -12,7 +12,7 @@ Podatki bodo v obliki CSV in HTML.
 
 #Tabele:
 
-1.TABELA: GIBANJE višine NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
+1.TABELA: GIBANJE VIŠINE NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
 
 - stoplci: sezona, starost igralca ob prestopu, klub odhoda, klub prihoda, cena
 
@@ -20,13 +20,17 @@ Podatki bodo v obliki CSV in HTML.
 
 - stolpci: leto, starost, pozicija, klub, narodnost
 
-3.TABELA: PLAČE ITALIJANSKIH IGRALCEV SKOZI LETA:
+3. PRIHODKI KLUBOV SKOZI LETA:
+
+-stolpci: pozicija,leto, klub, prihodek, država, rank prejšnje leto, sprememba pozicije
+
+4.TABELA: PLAČE ITALIJANSKIH IGRALCEV SKOZI LETA:
 
 - stolpci: klub, narodnost, starost, pozicija, leto
 
 kot zanimivost:
 
-4.TABELA: Razlika med prestopno ceno in tržno ceno igralca:
+5.TABELA: Razlika med prestopno ceno in tržno ceno igralca:
 
 - stolpci: leto, tržna cena, prestopna cena, razlika, klub odhoda, klub prihoda
 
