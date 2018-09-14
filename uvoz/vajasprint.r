@@ -98,7 +98,17 @@ colnames(tabela) <- c("rang v 2018", "klub", "dobicek (milijon)", "drzava", "ran
                       "sprememba")
 
 
-
+placa <- read_csv2("povprecnaplaca.csv",
+                   locale = locale(encoding = "Windows-1250"))
+colnames(placa) <- c("obcina","2010","2011","2012","2013","2014","2015","2016","2017")
+placa$`2012` <- placa$`2012` /100
+placa$`2013` <- placa$`2013` /100
+placa$`2014` <- placa$`2014` /100
+placa$`2015` <- placa$`2015` /100
+placa$`2016` <- placa$`2016` /100
+placa$`2017` <- placa$`2017` /100
+placa$`2010` <- parse_number(placa$`2010`)/100
+placa$`2011` <- parse_number(placa$`2011`)/100
 
 
 
