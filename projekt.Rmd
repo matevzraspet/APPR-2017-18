@@ -1,5 +1,5 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Analiza nogometnega trga in prihodki klubov"
 author: "Matevž Raspet"
 output:
   html_document: default
