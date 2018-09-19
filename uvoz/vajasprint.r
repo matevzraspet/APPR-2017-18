@@ -2,7 +2,7 @@ library(rvest)
 library(gsubfn)
 library(readr)
 library(dplyr)
-
+library(stringr)
 
 
 link <- "https://www.transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop"
@@ -83,13 +83,11 @@ messi["starost"] <- c("31","31","30","30","30","30","29","29","29","29","28","28
                       "24","24","24","23","23","23","23","22","22","22","22","22","22","21","21","21","20","20","20","19",
                       "19","19","19","19","18","18","18","17","17","17")
 messi$starost <- parse_number(messi$starost)
-messi["vredost"]<- c("180","180","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120",
+messi["vrednost"]<- c("180","180","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120",
                      "100","100","100","100","100","100","100","100","100","100","80","80","80","80","55","55","55","55","55","55",
                      "55","55","55","40","40","40","15","15","15","15","15","5","5","5","3","3","3")
-messi$vredost <- parse_number(messi$vredost)
-
-
-
+messi$vrednost <- parse_number(messi$vrednost)
+analiza <- messi[,c("sezona","stevilo.predstav","povpr.tock.na.tekmo","goli","asistence","odigrane.minute","starost","vrednost")]
 
 
 link <- "https://www.transfermarkt.com/spieler-statistik/wertvollstemannschaften/marktwertetop"
@@ -100,6 +98,15 @@ tabela111[1:2] <- list(NULL)
 
 
 
+link <- "https://www.worldfootball.net/attendance/bundesliga-2017-2018/1/"
+stran <- html_session(link) %>% read_html()
+tab <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
+  html_table(dec = ",", fill = TRUE)
+tab <- tab[,-c(1,2)]
+tab["pokrajina"] <- c("Nordrhein-Westfalen","Bayern","Nordrhein-Westfalen","Baden-Württemberg","Nordrhein-Westfalen","Hamburg",
+                 "Hessen","Nordrhein-Westfalen","Berlin","Niedersachsen","Bremen","Sachsen","Rheinland-Pfalz","Baden-Württemberg",
+                 "Nordrhein-Westfalen","Bavaria","Niedersachsen","Baden-Württemberg","")
+                
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 
 
@@ -137,15 +144,6 @@ link <- "http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-c
 stran <- html_session(link) %>% read_html()
 tabela1111 <- stran %>% html_nodes(xpath="//table") %>%
   .[[2]] %>% html_table(dec = ",")
-  
-  
-
-
-
-  
-  
-  
-  
   
   
   
