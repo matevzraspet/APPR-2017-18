@@ -8,7 +8,7 @@ library(stringr)
 link <- "https://www.transfermarkt.com/spieler-statistik/wertvollstespieler/marktwertetop"
 stran <- html_session(link) %>% read_html()
 skupno <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
-  html_table(dec = ",", fill = TRUE) 
+  html_table(dec = ",", fill = TRUE)
 skupno <- skupno[,-c(1,2,3,7,8)]
 colnames(skupno) <- c("igralec", "pozicija", "starost", "vrednost")
 skupno <-na.omit(skupno)
@@ -17,7 +17,7 @@ skupno <-na.omit(skupno)
 link <- "https://www.transfermarkt.com/spieler-statistik/rekordmarktwerte/marktwertetop/plus/0/galerie/0?position=Torwart&land_id=alle&yt0=Show"
 stran <- html_session(link) %>% read_html()
 golmani <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
-  html_table(dec = ",", fill = TRUE) 
+  html_table(dec = ",", fill = TRUE)
 golmani <- golmani[,-c(1,2,3,6,7)]
 colnames(golmani) <- c("igralec", "pozicija", "datum", "vrednost")
 golmani <-na.omit(golmani)
@@ -27,7 +27,7 @@ golmani <-na.omit(golmani)
 link <- "https://www.transfermarkt.com/spieler-statistik/rekordmarktwerte/marktwertetop/plus/0/galerie/0?position=Abwehr&land_id=alle&yt0=Show"
 stran <- html_session(link) %>% read_html()
 obramba <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
-  html_table(dec = ",", fill = TRUE) 
+  html_table(dec = ",", fill = TRUE)
 obramba <- obramba[,-c(1,2,3,6,7)]
 colnames(obramba) <- c("igralec", "pozicija", "datum", "vrednost")
 obramba <-na.omit(obramba)
@@ -35,7 +35,7 @@ obramba <-na.omit(obramba)
 link <- "https://www.transfermarkt.com/spieler-statistik/rekordmarktwerte/marktwertetop/plus/0/galerie/0?position=Mittelfeld&land_id=alle&yt0=Show"
 stran <- html_session(link) %>% read_html()
 sredina <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
-  html_table(dec = ",", fill = TRUE) 
+  html_table(dec = ",", fill = TRUE)
 sredina <- sredina[,-c(1,2,3,6,7)]
 colnames(sredina) <- c("igralec", "pozicija", "datum", "vrednost")
 sredina <-na.omit(sredina)
@@ -44,7 +44,7 @@ sredina <-na.omit(sredina)
 link <- "https://www.transfermarkt.com/spieler-statistik/rekordmarktwerte/marktwertetop/plus/0/galerie/0?position=Sturm&land_id=alle&yt0=Show"
 stran <- html_session(link) %>% read_html()
 napad <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
-  html_table(dec = ",", fill = TRUE) 
+  html_table(dec = ",", fill = TRUE)
 napad <- napad[,-c(1,2,3,6,7)]
 colnames(napad) <- c("igralec", "pozicija", "datum", "vrednost")
 napad <-na.omit(napad)
@@ -106,7 +106,7 @@ tab <- tab[,-c(1,2)]
 tab["pokrajina"] <- c("Nordrhein-Westfalen","Bayern","Nordrhein-Westfalen","Baden-Württemberg","Nordrhein-Westfalen","Hamburg",
                  "Hessen","Nordrhein-Westfalen","Berlin","Niedersachsen","Bremen","Sachsen","Rheinland-Pfalz","Baden-Württemberg",
                  "Nordrhein-Westfalen","Bavaria","Niedersachsen","Baden-Württemberg","")
-                
+
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 
 
@@ -144,11 +144,10 @@ link <- "http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-c
 stran <- html_session(link) %>% read_html()
 tabela1111 <- stran %>% html_nodes(xpath="//table") %>%
   .[[2]] %>% html_table(dec = ",")
-  
-  
+
+
   https://gadm.org/maps/DEU_1.html
-  
-  
-  
-  
-  
+
+
+
+
