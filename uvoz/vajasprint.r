@@ -67,9 +67,12 @@ igralci <- lapply(1:4, uvozi.igralce) %>% bind_rows()
 
 
 igralci1 <- igralci[,c("igralec","pozicija","starost","vrednost","drzava","klub")]
-igralci1$vrednost <- parse_number(igralci1$vrednost)/100
-igralci2 <- igralci[,c("odigrane.tekme","zadeti.goli","avtogoli","asistence","rumeni.kartoni","drugi.rumeni.karton","rdeci.karton",
-                       "prisel.kot.menjava","odsel.na.klop")]
+igralci1$vrednost <- parse_number(igralci1$vrednost, locale = locale(decimal_mark = ","))
+igralci2 <- igralci[,c("igralec","odigrane.tekme","zadeti.goli","avtogoli","asistence",
+                       "rumeni.kartoni","drugi.rumeni.karton","rdeci.karton","prisel.kot.menjava",
+                       "odsel.na.klop")] %>% melt(id.vars = "igralec",
+                                                  variable.name = "spremenljivka",
+                                                  value.name = "stevilo")
 
 
 
@@ -77,16 +80,25 @@ igralci2 <- igralci[,c("odigrane.tekme","zadeti.goli","avtogoli","asistence","ru
 link <- sprintf("https://www.transfermarkt.com/lionel-messi/leistungsdatendetails/spieler/28003")
 tabela5 <- html_session(link) %>% read_html() %>% html_nodes(xpath="//table") %>% .[[2]]
 messi <- tabela5 %>% html_table(dec = ",", fill = TRUE)
-messi <- messi[-c(1),-c(2,4)]
-colnames(messi) <- c("sezona", "tekmovanje", "stevilo.predstav", "povpr.tock.na.tekmo", "goli","asistence","rumeni.2rumeni.rdeci","odigrane.minute","starost")
-messi["starost"] <- c("31","31","30","30","30","30","29","29","29","29","28","28","28","28","28","28","27","27","27","26","26","26","26","25","25","25","25","24","24","24",
-                      "24","24","24","23","23","23","23","22","22","22","22","22","22","21","21","21","20","20","20","19",
-                      "19","19","19","19","18","18","18","17","17","17")
-messi$starost <- parse_number(messi$starost)
-messi["vrednost"]<- c("180","180","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120",
-                     "100","100","100","100","100","100","100","100","100","100","80","80","80","80","55","55","55","55","55","55",
-                     "55","55","55","40","40","40","15","15","15","15","15","5","5","5","3","3","3")
-messi$vrednost <- parse_number(messi$vrednost)
+
+messi <- messi[-c(1),-c(2,4,11)]
+colnames(messi) <- c("sezona", "tekmovanje", "stevilo.predstav", "povpr.tock.na.tekmo", "goli","asistence","rumeni.2rumeni.rdeci","odigrane.minute")
+messi$goli <- parse_number(messi$goli, na = "-")
+messi$asistence <- parse_number(messi$asistence, na = "-")
+messi$odigrane.minute <- parse_number(messi$odigrane.minute, na = "-", locale = locale(grouping_mark = "."))
+
+#messi$starost <- parse_number(messi$sezona) + 13
+#messi["vrednost"]<- c("180","180","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120","120",
+#                     "100","100","100","100","100","100","100","100","100","100","80","80","80","80","55","55","55","55","55","55",
+#                     "55","55","55","40","40","40","15","15","15","15","15","5","5","5","3","3","3")
+#messi$vrednost <- parse_number(messi$vrednost)
+
+messi_sezone <- data.frame(sezona = sprintf("%02d/%02d", 4:18, 5:19),
+                           starost = 17:31,
+                           vrednost = c(3, 5, 15, ...))
+
+#messi_skupaj <- inner_join(messi, messi_sezone, by = "sezona")
+
 analiza <- messi[,c("sezona","stevilo.predstav","povpr.tock.na.tekmo","goli","asistence","odigrane.minute","starost","vrednost")]
 
 
@@ -122,17 +134,12 @@ tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
 colnames(tabela) <- c("rang v 2018", "klub", "dobicek (milijon)", "drzava", "rang v 2017",
                       "sprememba")
 
-placa <- read_csv2("povprecnaplaca.csv",
-                   locale = locale(encoding = "Windows-1250"))
+
+placa <- read_delim("podatki/povprecnaplaca.csv", ";",
+                    locale = locale(encoding = "Windows-1250", decimal_mark = "."))
 colnames(placa) <- c("obcina","2010","2011","2012","2013","2014","2015","2016","2017")
-placa$`2012` <- placa$`2012` /100
-placa$`2013` <- placa$`2013` /100
-placa$`2014` <- placa$`2014` /100
-placa$`2015` <- placa$`2015` /100
-placa$`2016` <- placa$`2016` /100
-placa$`2017` <- placa$`2017` /100
-placa$`2010` <- parse_number(placa$`2010`)/100
-placa$`2011` <- parse_number(placa$`2011`)/100
+placa <- melt(placa, id.vars = "obcina", variable.name = "leto", value.name = "placa") %>%
+  mutate(leto = parse_number(leto))
 
 link <- "http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-chart/"
 stran <- html_session(link) %>% read_html()
