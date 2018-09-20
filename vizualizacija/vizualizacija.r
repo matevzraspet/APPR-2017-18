@@ -1,6 +1,6 @@
 # 3. faza: Vizualizacija podatkov
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
-
+library(ggplot2)
 
 graf.messi <- ggplot(data = messi_sezone) +
   geom_line(aes(x = starost,y = vrednost),size = 1.5, color = "red")+
@@ -18,6 +18,14 @@ graf.statistika <- ggplot(data = messi_sezone, aes(x= starost)) +
   scale_x_continuous(limits = c(17, 31))+
   xlab("Starost") + ylab("Goli in asistence")
 graf.statistika
+
+graf.igralci <- ggplot(igralci1, aes(x = pozicija ,y = vrednost))+
+  geom_bar(stat = "identity", position = "dodge",colour = "blue") +
+  xlab("pozicija") + ylab("vrednost") +
+  scale_y_continuous(limits = c(0, 200))+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  ggtitle("Vrednost igralcev po pozicijah")
+graf.igralci
 
 
 
