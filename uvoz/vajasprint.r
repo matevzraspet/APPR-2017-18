@@ -95,7 +95,9 @@ messi$odigrane.minute <- parse_number(messi$odigrane.minute, na = "-", locale = 
 
 messi_sezone <- data.frame(sezona = sprintf("%02d/%02d", 4:18, 5:19),
                            starost = 17:31,
-                           vrednost = c(3, 5, 15, 40, 55, 55, 80, 100, 100, 120, 120, 120, 120, 120, 180))
+                           vrednost = c(3, 5, 15, 40, 55, 55, 80, 100, 100, 120, 120, 120, 120, 120, 180),
+                           goli =c(1, 8, 17, 16, 38, 47, 53, 70, 60, 41, 58, 41, 54, 45, 7),
+                           asistence= c(0, 7, 4, 16, 17, 14, 28, 32, 17, 15, 27, 23, 16, 18, 3))
 
 #messi_skupaj <- inner_join(messi, messi_sezone, by = "sezona")
 

@@ -1,13 +1,11 @@
 # 3. faza: Vizualizacija podatkov
+source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
 
-# Uvozimo zemljevid.
-zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-                             "OB/OB", encoding = "Windows-1250")
-levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
-  { gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
-zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels = levels(obcine$obcina))
-zemljevid <- pretvori.zemljevid(zemljevid)
+graf.messi <- ggplot(data = messi_sezone) +
+  geom_line(aes(x = starost,y = vrednost),size = 1.5, color = "red")+
+  labs(title ="Povezava med starostjo in vrednostjo Messija")+
+  scale_y_continuous(limits = c(3, 190))+
+  scale_x_continuous(limits = c(17, 31))+
+  xlab("STAROST") + ylab("VREDNOST")
+graf.messi
 
-# Izračunamo povprečno velikost družine
-povprecja <- druzine %>% group_by(obcina) %>%
-  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
