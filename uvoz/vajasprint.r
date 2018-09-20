@@ -153,7 +153,7 @@ tabela1111 <- stran %>% html_nodes(xpath="//table") %>%
   .[[2]] %>% html_table(dec = ",")
 
 
-  https://gadm.org/maps/DEU_1.html
+  
 
 
 
