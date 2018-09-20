@@ -20,8 +20,8 @@ graf.statistika <- ggplot(data = messi_sezone, aes(x= starost)) +
 graf.statistika
 
 graf.igralci <- ggplot(igralci1, aes(x = pozicija ,y = vrednost))+
-  geom_bar(stat = "identity", position = "dodge",colour = "blue") +
-  xlab("pozicija") + ylab("vrednost") +
+  geom_bar(stat = "identity", position = "dodge",fill = "#FF6666") +
+  xlab("Pozicija") + ylab("Vrednost") +
   scale_y_continuous(limits = c(0, 200))+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ggtitle("Vrednost igralcev po pozicijah")
