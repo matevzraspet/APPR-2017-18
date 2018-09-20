@@ -95,7 +95,7 @@ messi$odigrane.minute <- parse_number(messi$odigrane.minute, na = "-", locale = 
 
 messi_sezone <- data.frame(sezona = sprintf("%02d/%02d", 4:18, 5:19),
                            starost = 17:31,
-                           vrednost = c(3, 5, 15, ...))
+                           vrednost = c(3, 5, 15, 40, 55, 55, 80, 100, 100, 120, 120, 120, 120, 120, 180))
 
 #messi_skupaj <- inner_join(messi, messi_sezone, by = "sezona")
 
@@ -118,9 +118,10 @@ tab <- tab[,-c(1,2)]
 tab["pokrajina"] <- c("Nordrhein-Westfalen","Bayern","Nordrhein-Westfalen","Baden-Württemberg","Nordrhein-Westfalen","Hamburg",
                  "Hessen","Nordrhein-Westfalen","Berlin","Niedersachsen","Bremen","Sachsen","Rheinland-Pfalz","Baden-Württemberg",
                  "Nordrhein-Westfalen","Bavaria","Niedersachsen","Baden-Württemberg","")
-
+colnames(tab) <- c("klub","obisk_skupaj","st_tekem","povprecje","pokrajina")
+tab <- tab[,c("klub","pokrajina","st_tekem","povprecje","obisk_skupaj")]
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
-
+tab <- tab[-c(19),]
 
 
 link <- "https://en.wikipedia.org/wiki/Deloitte_Football_Money_League#2015.E2.80.9316"
