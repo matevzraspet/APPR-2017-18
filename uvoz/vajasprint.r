@@ -124,8 +124,8 @@ colnames(tab) <- c("klub","obisk_skupaj","st_tekem","povprecje","pokrajina")
 tab <- tab[,c("klub","pokrajina","st_tekem","povprecje","obisk_skupaj")]
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 tab <- tab[-c(19),]
-tab$povprecje <- parse_number(tab$povprecje)
-tab$obisk_skupaj <- parse_number(tab$obisk_skupaj)
+tab$povprecje <- parse_integer(tab$povprecje,grouping_mark = ".")
+tab$obisk_skupaj <- parse_integer(tab$obisk_skupaj,grouping_mark = ".")
 
 
 link <- "https://en.wikipedia.org/wiki/Deloitte_Football_Money_League#2015.E2.80.9316"
