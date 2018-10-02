@@ -33,7 +33,13 @@ graf.igralci <- ggplot(igralci1 %>% group_by(pozicija) %>% summarise(vrednost = 
   ggtitle("Vrednost igralcev po pozicijah")
 graf.igralci
 
+zemljevid <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_DEU_shp.zip",
+                             "gadm36_DEU_1") %>% pretvori.zemljevid()
 
+zem.obisk <- ggplot() + geom_polygon(data = tab %>% group_by(pokrajina) %>% summarise(obisk = sum(obisk_skupaj)) %>%
+                                       right_join(zemljevid, by = c("pokrajina" = "NAME_1")),
+                                     aes(x = long, y = lat, group = group, fill = obisk/1000000)) +
+  guides(fill = guide_colorbar("Obisk v milijonih"))
 
 
 

@@ -119,13 +119,13 @@ tab <- stran %>% html_nodes(xpath="//table") %>% .[[2]] %>%
 tab <- tab[,-c(1,2)]
 tab["pokrajina"] <- c("Nordrhein-Westfalen","Bayern","Nordrhein-Westfalen","Baden-Württemberg","Nordrhein-Westfalen","Hamburg",
                  "Hessen","Nordrhein-Westfalen","Berlin","Niedersachsen","Bremen","Sachsen","Rheinland-Pfalz","Baden-Württemberg",
-                 "Nordrhein-Westfalen","Bavaria","Niedersachsen","Baden-Württemberg","")
+                 "Nordrhein-Westfalen","Bayern","Niedersachsen","Baden-Württemberg","")
 colnames(tab) <- c("klub","obisk_skupaj","st_tekem","povprecje","pokrajina")
 tab <- tab[,c("klub","pokrajina","st_tekem","povprecje","obisk_skupaj")]
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 tab <- tab[-c(19),]
-tab$povprecje <- parse_integer(tab$povprecje,grouping_mark = ".")
-tab$obisk_skupaj <- parse_integer(tab$obisk_skupaj,grouping_mark = ".")
+tab$povprecje <- parse_number(tab$povprecje, locale = sl)
+tab$obisk_skupaj <- parse_number(tab$obisk_skupaj, locale = sl)
 
 
 link <- "https://en.wikipedia.org/wiki/Deloitte_Football_Money_League#2015.E2.80.9316"
