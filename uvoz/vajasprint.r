@@ -143,19 +143,17 @@ colnames(tabela) <- c("rang v 2018", "klub", "dobicek (milijon)", "drzava", "ran
 placa <- read_delim("podatki/povprecnaplaca.csv", ";",
                     locale = locale(encoding = "Windows-1250", decimal_mark = "."))
 colnames(placa) <- c("obcina","2010","2011","2012","2013","2014","2015","2016","2017")
-placa <- melt(placa, id.vars = "obcina", variable.name = "leto", value.name = "placa") %>%
+placa <- melt(placa, id.vars = "obcina", variable.name = "leto", value.name = "dohodek") %>%
   mutate(leto = parse_number(leto))
 
-link <- "http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-chart/"
-stran <- html_session(link) %>% read_html()
-tabela1 <- stran %>% html_nodes(xpath="//table") %>%
-  .[[1]] %>% html_table(dec = ",")
-
-
-link <- "http://www.rossoneriblog.com/2016/09/07/milan-20162017-players-salary-chart/"
-stran <- html_session(link) %>% read_html()
-tabela1111 <- stran %>% html_nodes(xpath="//table") %>%
-  .[[2]] %>% html_table(dec = ",")
+placa1 <- placa[c(1:210),]
+placa2 <- placa[c(211:420),]
+placa3 <- placa[c(421:630),]
+placa4 <- placa[c(631:840),]
+placa5 <- placa[c(841:1050),]
+placa6 <- placa[c(1051:1260),]
+placa7 <- placa[c(1261:1470),]
+placa8 <- placa[c(1471:1680),]
 
 
   
