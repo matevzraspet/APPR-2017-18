@@ -35,6 +35,28 @@ graf.igralci
 
 
 
+gpclibPermit()
+zemljevid <- uvozi.zemljevid("https://biogeo.ucdavis.edu/data/gadm3.6/shp/gadm36_DEU_shp.zip",
+                             "gadm36_DEU_1") %>% pretvori.zemljevid()
+
+imena.pokrajin <- aggregate(cbind(long, lat) ~ pokrajina, data = (tab %>% right_join(zemljevid, by = c("pokrajina" = "NAME_1"))), FUN=function(x)mean(range(x)))
+
+zemljevid.stopnje <- ggplot() +
+  geom_polygon(data = tab %>% right_join(zemljevid, by = c("pokrajina" = "NAME_1")),
+               aes(x = long, y = lat, group = group, fill =obisk_skupaj), color = "black")+
+  xlab("") + ylab("")+ 
+  geom_text(data=imena.pokrajin, aes(x =long, y=lat, label = pokrajina)) + 
+  ggtitle("Obisk prvoligaških tekem po pokrajinah")
+
+
+
+
+
+
+
+
+
+
 
 
 
