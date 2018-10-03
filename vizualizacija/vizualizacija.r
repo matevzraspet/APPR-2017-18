@@ -28,13 +28,21 @@ graf.statistika
 graf.igralci <- ggplot(igralci1 %>% group_by(pozicija) %>% summarise(vrednost = sum(vrednost)),
                        aes(x = pozicija, y = vrednost)) +
   geom_col(position = "dodge", fill = "blue") +
-  xlab("Pozicija") + ylab("Vrednost") +
+  xlab("Pozicija") + ylab("Vrednost (v mio €)") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ggtitle("Vrednost igralcev po pozicijah")
 graf.igralci
 
+graf.starost <- ggplot(igralci1 %>% group_by(starost) %>% summarise(vrednost = sum(vrednost)),
+                       aes(x = starost, y = vrednost)) +
+  geom_col(position = "dodge", fill = "peachpuff3") +
+  xlab("Pozicija") + ylab("Vrednost (v mio €)") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  ggtitle("Vrednost igralcev po pozicijah")
+graf.starost
 
-=======
+
+
 mesta <- data.frame(lon = c(7.468429,11.576124,7.12283,9.17702,6.44172,9.993682,8.682127,6.958307,13.404954,9.73322,8.806422,12.387772,8.2791,8.840872,6.98432,10.894446,10.780420,7.85222),
                     lat = c(51.514244,48.137154,51.5075,48.78232,51.18539,53.551086,50.110924,50.941357,52.520008,52.37052, 53.073635,51.343479,49.98419,49.272097,51.0303,48.366512,52.427547,47.9959))
 
@@ -46,7 +54,7 @@ zem.obisk <- ggplot() + geom_polygon(data = tab %>% group_by(pokrajina) %>% summ
                                      aes(x = long, y = lat, group = group, fill = obisk/1000000)) +
   guides(fill = guide_colorbar("Obisk v milijonih")) + ggtitle("Obisk nemških prvoligaških tekem glede na pokrajine") +
   geom_point(data=mesta, aes(x=lon, y=lat), color="black", size=2, alpha=1)
->>>>>>> 7f3fc80e87f275312d3b014e2375e56b71428b02
+
 
 
 
