@@ -3,36 +3,35 @@
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Analiza nogometnega trga in prihodki klubov
-Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev, razporeditev plač igralcev po klubih italijanske lige ( Gazette dello Sport je namreč edini časopis, ki izda zanseljive letne plače igralcev v italijanski ligi) in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
+Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev, razporeditev plač igralcev po klubih italijanske lige ( Gazette dello Sport je namreč edini časopis, ki izda zanseljive letne plače igralcev v italijanski ligi), vrednost igralcev glede na pozicijo, vrednost cene igralca glede na starost in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
 
-Poskušal bom ugotoviti trende, kako spreminjanje tržnih vrednosti igralcev, spreminjanje višin prestopnih klavzul igralcev vpliva na prihodke klubov in obnašanje nogometnega trga,  poleg tega pa bi rad ugotovil vzorce razporeditve plač (v italijanski ligi ; kdo zasluži največ, kje je procentualno skoncentriranega največ denarja v odvisnosti od različnih parametrov(narodnost, položaj igranja, starost...).
-Kot zanimivost bom analiziral, še razliko med višino prestopov in dejanskimi cenami igralcev ob prestopu(cena vrednotena na Transfermarktu).
+Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralcev. Za primer bom vzel enega izmed najboljših nogometašev na svetu, Lionela Messija, in bom pogledal kako starost in nogometna učinovitost vplivata na vrednost igralca. Nato bom v večji bazi igralcev pogledal katera leta so za igralce najbolj donosna. Na koncu pa bom poskušal dobiti še nekaj zanimivih zaključkov iz nemške lige
 
 Podatki bodo v obliki CSV in HTML.
 
 # Tabele:
 
-1.TABELA: GIBANJE VIŠINE NAJVEČJIH NOGOMETNIH PRESTOPOV SKOZI LETA:
+1.TABELA: TRŽNE VREDNOSTI NAJDRAŽJIH IGRALCEV:
 
-- stoplci: sezona, starost igralca ob prestopu, klub odhoda, klub prihoda, cena
+- stoplci: pozicija, starost, vrednost,država, klub
 
-2.TABELA: GIBANJE TRŽNIH CEN IGRALCEV SKOZI LETA:
+2.TABELA: KAZALNIKI MESSIJA:
 
-- stolpci: leto, starost, pozicija, klub, narodnost
+- stolpci: sezona, starost, vrednost, goli, asistence
 
 3. PRIHODKI KLUBOV SKOZI LETA:
 
 -stolpci: pozicija,leto, klub, prihodek, država, rank prejšnje leto, sprememba pozicije
 
-4.TABELA: PLAČE ITALIJANSKIH IGRALCEV SKOZI LETA:
+4.TABELA: OBISK TEKEM V NEMŠKI LIGI:
 
-- stolpci: klub, narodnost, starost, pozicija, leto
+- stolpci: klub, pokrajina, stevilo tekem, povprecje, skupen obisk
 
 kot zanimivost:
 
-5.TABELA: Razlika med prestopno ceno in tržno ceno igralca:
+5.TABELA: POVPREČNE PLAČE V SLOVENIJI PO REGIJAH:
 
-- stolpci: leto, tržna cena, prestopna cena, razlika, klub odhoda, klub prihoda
+- stolpci: občina,leto, dohodek
 
 
 
