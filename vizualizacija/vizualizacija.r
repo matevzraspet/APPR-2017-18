@@ -57,5 +57,25 @@ zem.obisk <- ggplot() + geom_polygon(data = tab %>% group_by(pokrajina) %>% summ
 
 
 
+###################################### zemljevidi za shiny
+
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                          "OB/OB", encoding = "UTF-8") %>%
+  pretvori.zemljevid()
+
+placa_2010 <- ggplot() + geom_polygon(data = placa1 %>% 
+                                       right_join(slovenija, by = c("obcina" = "NAME_1")),
+                                     aes(x = long, y = lat, group = group, fill = dohodek)) +
+                                      ggtitle("Povprečna plača v letu 2010 po občinah")
+
+
+
+
+
+
+
+
+
 
 
