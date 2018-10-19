@@ -21,6 +21,11 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
+
+![](https://images.pexels.com/photos/39562/the-ball-stadion-football-the-pitch-39562.jpeg?cs=srgb&dl=ball-football-game-39562.jpg&fm=jpg)
+
+
+
 Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev,  vrednost igralcev glede na pozicijo, vrednost cene igralca glede na starost in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
 
 Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralcev. Za primer bom vzel enega izmed najboljših nogometašev na svetu, Lionela Messija, in bom pogledal kako starost in nogometna učinovitost vplivata na vrednost igralca. Nato bom v večji bazi igralcev pogledal katera leta so za igralce najbolj donosna. Na koncu pa bom poskušal dobiti še nekaj zanimivih zaključkov iz nemške lige.
@@ -75,14 +80,7 @@ z Wikipedije. Podatke imam v petih razpredelnicah v obliki *tidy data*.
   - `leto` - spremenljivka: leto, katerega so bile narejene meritve,
   - `dohodek` - meritev: velikost plače
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-```
 
 ***
 
@@ -92,14 +90,55 @@ ggplot(obcine, aes(x = naselja)) + geom_histogram() +
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+V fazi vizualizacije sem se odločil narisati štiri grafe in zemljevid.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data = left_join(zemljevid, povprecja, by = c("OB_UIME" = "obcina")),
-                        aes(x = long, y = lat, group = group, fill = povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill = guide_colorbar(title = "Povprečje"))
+Prvi graf prikazuje odvisnost tržne cene Lionela Messija glede na starost. 
+Zelo zanimivo je opažanje, da Messijeva tržna vrednost skozi celotno kariero raste. Razvidni so trije strmi naraščaji in sicer med starostjo 18-22 let, ko je Messi šele dobro začel profesionalno kariero in je bil zato zelo željan dokazovanja. Nato je sledil drugi strm vzpon cene, med starostjo 22-26, kar je povsem normalno, saj so to zlata leta športnikov. Takrat so športniki najbolj vzdržljjivi, imajo že zadosti izkušenj na najvišjem nivoju, prav tako pa so še vedno željni dokazovanja in zmag.
+Zelo presenetljiv pa je tretji skok cene med starostjo 30-32 let, ki je namreč tudi največji, prav tako pa še vedno traja. Presenetljivo je namreč, da Messijeva cena kljub njegovim dvaintridesetim letom še vedno strmo narašča. Ta tendenca nam narekuje kako blazno so poskočile cene v nogometnem svetu v zadnjem obdobju.
+Bolj podrobno bomo pokomenitrali opažanja v zaključku naloge.
+
+```{r graf.messi, echo = FALSE, message = FALSE, warning = FALSE}
+print(graf.messi)
 ```
+
+
+Zaradi presenetljivosti prvega grafa, sem se odločil analizirati učinkovitost Messija(dani goli in asistence) glede na njegovo starost.
+Drugi graf torej  prikazuje odvisnost danih golov in asistenc Messija glede na starost.Tako bomo res videli ali ali tržna vrednost Messija, zaradi same nogometne igre, upravičeno narašča.
+Vidimo lahko, da temu ni tako. Messijeva zlata doba učinkovitosti je bila namreč med starostjo 25-27 letom starosti, od 27-31 leta pa osebna statistika za razliko od tržne vredosti ne raste več.
+So zatorej nogometne cene v tem trenutku preveč napihnjene?
+```{r graf.statistika, echo = FALSE, message = FALSE, warning = FALSE}
+print(graf.statistika)
+```
+
+S tretjim histogramom sem zajel bazo 100 igralcev in pogledal kako je tržna vrednost igralcev odvisna od starosti.
+Tukaj opazimo naravno obliko histograma, ki prikazuje kako tržna vrednost igralcev do 27-28 leta raste, potem pa začne padati.
+To je naravna oblika, katero sem pričakoval tuki pri Lionelu Messiju. Zgleda je Lionel Messi res eden izmed izjemnih nogometašev, ki bo tako kot Ronaldo, Federer in drugi svetovni velikani lahko vzdržal najvišjo raven nogometa še mnogo po 32 letu starosti, starosti pri kateri ostali športiki počasi že začnejo razmišljati o koncu športne kariere.
+
+```{r graf.starost, echo = FALSE, message = FALSE, warning = FALSE}
+print(graf.starost)
+```
+
+
+S četrtim histogramom sem hotel analizirati kako so vrednosti igralcev odvisne glede na igralne pozicije.
+Analiziral sem 100 najdražjih nogometašev na svetu in izluščil očiten podatek. Najbolj tržno vredni nogometaši so nogometaši napadalnih pozicij. Razvidno je, da je tržna cena centralnih napadalcev, levih in desnih krilnih igralcev precej večja od defenzivnih nogometnih pozicij.
+To se pravi, da nogometno tržišče največ ceni igralce, ki zadevajo gole. Kar pa ni nujno, da je prav. Zagotovo me je presenetil podatek, da so centrni vezisti in napadalni vezisti bistveno manj vredni od napadalcev, čeprav so prav ti vezisti motor in srce vsake ekipe, oni so tisti, ki organiziranjo igro in kreirajo napade. 
+Prav tako pa je cena defenzivnih igralcev, levih in desnih bočnih igralcev, zadnjih vezistov in centralnih branilcev močno podcenjena, glede na to, da so prav tako tudi te igralci zelo pomembni za vsako tekmo in nemalokrat ključni faktor za zmago. Kaj šele vratarji, katerih cena je prav tako v primerjavi z napadalci minimalna.
+Iz cen vidimo kako velik vpliv ima popularnost igralca in zmožnost reklamiranja igralca velik vpliv na tržno vrednost. Na vseh oglasih so namreč napadalci in ne defenzivni igralci.
+
+```{r graf.igralci, echo = FALSE, message = FALSE, warning = FALSE}
+print(graf.igralci)
+```
+
+Na koncu sem hotel poiskati še neko zanimivo opažanje iz nogometnega tržišča.
+Zato sem naredil zemljevid, ki prikazuje število vseh prodanih prvoligaških tekem v vsaki zvezni deželi Nemčije. Prav tako pa sem na zemljevid vključil tudi razporeditev vseh nemških prvoligaških klubov.
+Zares presenetljiv je podatek kako zelo je nogomet koncentriran na zahodni in južni del Nemčije, se pravi na Bavarsko in pa na Severno Porenje-Vestfalijo. Večinoma klubov v Nemčiji je razporejenih v tem delu. Če bi narisali ločnico po sredini Nemčije, bi videli blazno odstopanje med zahodom in vzhodom.
+Iz tega opažanja vidimo, kako tesno je nogomet povezan z gospodarstvom in industrijo. Nemški nogomet je koncentriran, kjer sta koncentrirana gospodarstvo in industrija.
+
+
+```{r zem.obisk, echo=FALSE, message=FALSE, warning=FALSE}
+print(zem.obisk)
+```
+
 
 ***
 

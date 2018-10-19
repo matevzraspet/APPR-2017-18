@@ -36,9 +36,9 @@ graf.igralci
 graf.starost <- ggplot(igralci1 %>% group_by(starost) %>% summarise(vrednost = sum(vrednost)),
                        aes(x = starost, y = vrednost)) +
   geom_col(position = "dodge", fill = "peachpuff3") +
-  xlab("Pozicija") + ylab("Vrednost (v mio €)") +
+  xlab("Starost") + ylab("Vrednost (v mio €)") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  ggtitle("Vrednost igralcev po pozicijah")
+  ggtitle("Vrednost igralcev po starosti")
 graf.starost
 
 
@@ -54,6 +54,7 @@ zem.obisk <- ggplot() + geom_polygon(data = tab %>% group_by(pokrajina) %>% summ
                                      aes(x = long, y = lat, group = group, fill = obisk/1000000)) +
   guides(fill = guide_colorbar("Obisk v milijonih")) + ggtitle("Obisk nemških prvoligaških tekem glede na pokrajine") +
   geom_point(data=mesta, aes(x=lon, y=lat), color="black", size=2, alpha=1)
+zem.obisk
 
 
 
@@ -61,18 +62,13 @@ zem.obisk <- ggplot() + geom_polygon(data = tab %>% group_by(pokrajina) %>% summ
 
 
 slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-                          "OB/OB", encoding = "UTF-8") %>%
+                          "OB_OB", encoding = "UTF-8") %>%
   pretvori.zemljevid()
 
 placa_2010 <- ggplot() + geom_polygon(data = placa1 %>% 
                                        right_join(slovenija, by = c("obcina" = "NAME_1")),
                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
                                       ggtitle("Povprečna plača v letu 2010 po občinah")
-
-
-
-
-
 
 
 
