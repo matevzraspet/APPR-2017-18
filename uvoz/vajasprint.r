@@ -146,6 +146,8 @@ colnames(placa) <- c("obcina","2010","2011","2012","2013","2014","2015","2016","
 placa <- melt(placa, id.vars = "obcina", variable.name = "leto", value.name = "dohodek") %>%
   mutate(leto = parse_number(leto))
 
+
+
 placa1 <- placa[c(1:210),]
 placa2 <- placa[c(211:420),]
 placa3 <- placa[c(421:630),]
@@ -155,7 +157,11 @@ placa6 <- placa[c(1051:1260),]
 placa7 <- placa[c(1261:1470),]
 placa8 <- placa[c(1471:1680),]
 
-
+placar <- read_delim("podatki/placaregije.csv", ";",
+                    locale = locale(encoding = "Windows-1250", decimal_mark = "."))
+colnames(placa) <- c("obcina","2012","2013","2014","2015","2016","2017")
+placar <- melt(placar, id.vars = "obcina", variable.name = "leto", value.name = "dohodek") %>%
+  mutate(leto = parse_number(leto))
   
 
 
