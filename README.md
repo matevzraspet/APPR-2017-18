@@ -5,7 +5,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 ## Analiza nogometnega trga in prihodki klubov
 Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev, razporeditev plač igralcev po klubih italijanske lige ( Gazette dello Sport je namreč edini časopis, ki izda zanseljive letne plače igralcev v italijanski ligi), vrednost igralcev glede na pozicijo, vrednost cene igralca glede na starost in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
 
-Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralcev. Za primer bom vzel enega izmed najboljših nogometašev na svetu, Lionela Messija, in bom pogledal kako starost in nogometna učinovitost vplivata na vrednost igralca. Nato bom v večji bazi igralcev pogledal katera leta so za igralce najbolj donosna. Na koncu pa bom poskušal dobiti še nekaj zanimivih zaključkov iz nemške lige
+Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralcev. Za primer bom vzel enega izmed najboljših nogometašev na svetu, Lionela Messija, in bom pogledal kako starost in nogometna učinovitost vplivata na vrednost igralca. Nato bom v večji bazi igralcev pogledal katera leta so za igralce najbolj donosna. Na koncu pa bom poskušal dobiti še nekaj zanimivih zaključkov iz nemške lige.
 
 Podatki bodo v obliki CSV in HTML.
 

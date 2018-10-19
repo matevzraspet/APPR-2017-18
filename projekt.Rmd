@@ -21,7 +21,10 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Pri tem projektu bom analiziral nogometni trg v zadnjih letih in sicer gibanje višine najbolj odmevnih prestopov leta, gibanje tržnih cen igralcev,  vrednost igralcev glede na pozicijo, vrednost cene igralca glede na starost in pa gibanje prihodkov nogometnih klubov. Skratka zanimalo me bo obnašanje nogometnega trga, ki vemo, da je sedaj zelo v razcvetu, saj so cene prestopov, plače ...,  "poletele" astronomsko v nebo.
+
+Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralcev. Za primer bom vzel enega izmed najboljših nogometašev na svetu, Lionela Messija, in bom pogledal kako starost in nogometna učinovitost vplivata na vrednost igralca. Nato bom v večji bazi igralcev pogledal katera leta so za igralce najbolj donosna. Na koncu pa bom poskušal dobiti še nekaj zanimivih zaključkov iz nemške lige.
+
 
 ***
 
@@ -31,24 +34,46 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozil sem podatke  v obliki CSV s statističnega urada ter v obliki HTML
+z Wikipedije. Podatke imam v petih razpredelnicah v obliki *tidy data*.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `Igralci` - podatki o igralcih glede na pozicijo
+  - `pozicija` - spremenljivka: igralna pozicija igralca,
+  - `starost` - meritev: starost igralca,
+  - `vrednost` - meritev: vrednost igralca,
+  - `država` - spremenljivka: narodnost igralca,
+  - `klub` - spremenljivka: klub za katerega igra igralec.
+  
+2. `Statistika` - statistika igralcev glede na ceno
+  - `vrednost` - spremenljivka: vrednost igralca,
+  - `starost` - spremenljivka: starost igralca,
+  - `odigrane tekme` - meritev: št.odigranih tekem,
+  - `zadeti goli` - meritev. št. danih golov posameznega igralca,
+  - `avtogoli` - meritev: število danih avtogolov posameznega igralca,
+  - `rumeni karton`- meritev: št.prejetih rumenih kartonov,
+  - `drugi rumeni karton` - meritev: št. prejetih drugih rumenih kartonov na eni tekmi,
+  - `rdeči karton` - meritev: št. prejetih rdečih kartonov,
+  - `prišel kot menjava` - meritev: št.tekem, ko je igralec prišel kot menjava,
+  - `odšel na klop` - meritev: št. tekem, ko je bil igralec zamenjan.
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+3. `Messi` - statistika Lionela Messija
+  - `sezona` - spremenljivka: sezona igranja,
+  - `starost` - spremenljivka: starost Messija v določeni sezoni,
+  - `vrednost` - meritev: tržna vrednost Messija,
+  - `goli` - meritev: število danih golov,
+  - `asistence` - meritev: število asistenc.
+  
+  
+4. `Nemška liga` - obisk prvoligaških tekem
+  - `klub` - spremenljivka: nemški prvoligaški klub,
+  - `pokrajina` - spremenljivka: pokrajina v kateri je nemški prvoligaš,
+  - `število tekem` - meritev: st. gostujočih prvoligaskih tekem posameznega kluba v sezoni,
+  - `povprečje` - meritev: povprečen obisk na tekmi,
+  - `obisk skupaj` - meritev: število prodanih vstopnic za domače tekme tekom cele sezone
+  
+5. `Plače` - povprečne plače po občinah Slovenije
+  - `leto` - spremenljivka: leto, katerega so bile narejene meritve,
+  - `dohodek` - meritev: velikost plače
 
 **Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
 
