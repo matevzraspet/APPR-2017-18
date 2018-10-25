@@ -1,24 +1,25 @@
 library(shiny)
+library(datasets)
+
 
 shinyServer(function(input, output) {
-  output$druzine <- DT::renderDataTable({
-    dcast(druzine, obcina ~ velikost.druzine, value.var = "stevilo.druzin") %>%
-      rename(`Občina` = obcina)
+  output$box <- renderPlot({
+    if(input$type == "2010"){
+      print(placa_2010)}
+    else if (input$type == "2011"){
+      print(placa_2011)}
+    else if (input$type == "2012"){
+      print(placa_2012)}
+    else if (input$type == "2013"){
+      print(placa_2013)}
+    else if (input$type == "2014"){
+      print(placa_2014)}
+    else if (input$type == "2015"){
+      print(placa_2015)}
+    else if (input$type == "2016"){
+      print(placa_2016)}
+    else if (input$type == "2017"){
+      print(placa_2017)}
   })
-  
-  output$pokrajine <- renderUI(
-    selectInput("pokrajina", label="Izberi pokrajino",
-                choices=c("Vse", levels(obcine$pokrajina)))
-  )
-  output$naselja <- renderPlot({
-    main <- "Pogostost števila naselij"
-    if (!is.null(input$pokrajina) && input$pokrajina %in% levels(obcine$pokrajina)) {
-      t <- obcine %>% filter(pokrajina == input$pokrajina)
-      main <- paste(main, "v regiji", input$pokrajina)
-    } else {
-      t <- obcine
-    }
-    ggplot(t, aes(x = naselja)) + geom_histogram() +
-      ggtitle(main) + xlab("Število naselij") + ylab("Število občin")
-  })
-})
+}
+)

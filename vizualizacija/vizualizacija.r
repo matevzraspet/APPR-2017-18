@@ -72,9 +72,118 @@ placa_2010 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2010) %>%
                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
                                       ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2010
+
+#################################
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2011 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2011) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2011
+
+###############################
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2012 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2012) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2012
 
 
 
+#################################
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2013 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2013) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2013
 
 
+################################
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2014 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2014) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2014
+
+
+###############################
+
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2015 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2015) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2015
+
+
+###############################
+
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2016<- ggplot() + geom_polygon(data = placa %>% filter(leto == 2016) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2016
+
+
+################################
+
+
+slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
+                             "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
+
+placa_2017 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2017) %>% 
+                                        right_join(slovenija, by = c("obcina" = "OB_UIME")),
+                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
+  ggtitle("Povprečna plača v letu 2010 po občinah")
+placa_2017
 
