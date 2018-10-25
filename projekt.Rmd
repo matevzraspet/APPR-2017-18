@@ -36,7 +36,7 @@ Poskušal bom ugotoviti trende, kakšno je spreminjanje tržnih vrednosti igralc
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE}
-source("uvoz/uvoz.r", encoding = "UTF-8")
+source("uvoz/vajasprint.r", encoding = "UTF-8")
 ```
 
 Uvozil sem podatke  v obliki CSV s statističnega urada ter v obliki HTML

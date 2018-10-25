@@ -101,7 +101,7 @@ messi_sezone <- data.frame(sezona = sprintf("%02d/%02d", 4:18, 5:19),
 
 #messi_skupaj <- inner_join(messi, messi_sezone, by = "sezona")
 
-analiza <- messi[,c("sezona","stevilo.predstav","povpr.tock.na.tekmo","goli","asistence","odigrane.minute","starost","vrednost")]
+#analiza <- messi[,c("sezona","stevilo.predstav","povpr.tock.na.tekmo","goli","asistence","odigrane.minute","starost","vrednost")]
 
 
 link <- "https://www.transfermarkt.com/spieler-statistik/wertvollstemannschaften/marktwertetop"
@@ -145,7 +145,8 @@ placa <- read_delim("podatki/povprecnaplaca.csv", ";",
 colnames(placa) <- c("obcina","2010","2011","2012","2013","2014","2015","2016","2017")
 placa <- melt(placa, id.vars = "obcina", variable.name = "leto", value.name = "dohodek") %>%
   mutate(leto = parse_number(leto))
-
+placa$obcina <- placa$obcina %>% strapplyc("^([^/]*)") %>% unlist()
+placa$obcina <- factor(placa$obcina, levels=sort(c(unique(placa$obcina), "Ankaran", "Mirna")))
 
 
 placa1 <- placa[c(1:210),]
