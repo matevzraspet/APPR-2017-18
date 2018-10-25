@@ -103,16 +103,16 @@ print(graf.messi)
 
 
 Zaradi presenetljivosti prvega grafa, sem se odločil analizirati učinkovitost Messija(dani goli in asistence) glede na njegovo starost.
-Drugi graf torej  prikazuje odvisnost danih golov in asistenc Messija glede na starost.Tako bomo res videli ali ali tržna vrednost Messija, zaradi same nogometne igre, upravičeno narašča.
-Vidimo lahko, da temu ni tako. Messijeva zlata doba učinkovitosti je bila namreč med starostjo 25-27 letom starosti, od 27-31 leta pa osebna statistika za razliko od tržne vredosti ne raste več.
+Drugi graf torej  prikazuje odvisnost danih golov in asistenc Messija glede na starost.Tako bomo res videli ali  tržna vrednost Messija, zaradi same nogometne igre, upravičeno narašča.
+Vidimo lahko, da temu ni tako. Messijeva zlata doba učinkovitosti je bila namreč med 25-27 letom starosti, od 27-31 leta pa osebna statistika za razliko od tržne vredosti ne raste več.
 So zatorej nogometne cene v tem trenutku preveč napihnjene?
 ```{r graf.statistika, echo = FALSE, message = FALSE, warning = FALSE}
 print(graf.statistika)
 ```
 
 S tretjim histogramom sem zajel bazo 100 igralcev in pogledal kako je tržna vrednost igralcev odvisna od starosti.
-Tukaj opazimo naravno obliko histograma, ki prikazuje kako tržna vrednost igralcev do 27-28 leta raste, potem pa začne padati.
-To je naravna oblika, katero sem pričakoval tuki pri Lionelu Messiju. Zgleda je Lionel Messi res eden izmed izjemnih nogometašev, ki bo tako kot Ronaldo, Federer in drugi svetovni velikani lahko vzdržal najvišjo raven nogometa še mnogo po 32 letu starosti, starosti pri kateri ostali športiki počasi že začnejo razmišljati o koncu športne kariere.
+Tukaj opazimo naravno obliko histograma, ki prikazuje kako tržna vrednost igralcev do 27-28 leta starosti raste, potem pa začne padati.
+To je naravna oblika, katero sem pričakoval tudi pri Lionelu Messiju. Zgleda je Lionel Messi res eden izmed izjemnih nogometašev, ki bo tako kot Ronaldo, Federer in drugi svetovni velikani lahko vzdržal najvišjo raven nogometa še mnogo po 32 letu starosti, starosti pri kateri ostali športiki počasi že začnejo razmišljati o koncu športne kariere.
 
 ```{r graf.starost, echo = FALSE, message = FALSE, warning = FALSE}
 print(graf.starost)
@@ -121,9 +121,9 @@ print(graf.starost)
 
 S četrtim histogramom sem hotel analizirati kako so vrednosti igralcev odvisne glede na igralne pozicije.
 Analiziral sem 100 najdražjih nogometašev na svetu in izluščil očiten podatek. Najbolj tržno vredni nogometaši so nogometaši napadalnih pozicij. Razvidno je, da je tržna cena centralnih napadalcev, levih in desnih krilnih igralcev precej večja od defenzivnih nogometnih pozicij.
-To se pravi, da nogometno tržišče največ ceni igralce, ki zadevajo gole. Kar pa ni nujno, da je prav. Zagotovo me je presenetil podatek, da so centrni vezisti in napadalni vezisti bistveno manj vredni od napadalcev, čeprav so prav ti vezisti motor in srce vsake ekipe, oni so tisti, ki organiziranjo igro in kreirajo napade. 
+To se pravi, da nogometno tržišče največ ceni igralce, ki zadevajo gole. Kar pa ni nujno, da je prav. Zagotovo me je presenetil podatek, da so centralni vezisti in napadalni vezisti bistveno manj vredni od napadalcev, čeprav so prav ti vezisti motor in srce vsake ekipe, oni so tisti, ki organiziranjo igro in kreirajo napade. 
 Prav tako pa je cena defenzivnih igralcev, levih in desnih bočnih igralcev, zadnjih vezistov in centralnih branilcev močno podcenjena, glede na to, da so prav tako tudi te igralci zelo pomembni za vsako tekmo in nemalokrat ključni faktor za zmago. Kaj šele vratarji, katerih cena je prav tako v primerjavi z napadalci minimalna.
-Iz cen vidimo kako velik vpliv ima popularnost igralca in zmožnost reklamiranja igralca velik vpliv na tržno vrednost. Na vseh oglasih so namreč napadalci in ne defenzivni igralci.
+Iz tržnih vrednosti po pozicijah lahko opazimo, da veliko vlogo pri le teh igra prav popularnost v medijih in zmožnost reklamiranja napadalcev v reklamah. Na vseh oglasih so namreč večinoma napadalci in ne defenzivni igralci.
 
 ```{r graf.igralci, echo = FALSE, message = FALSE, warning = FALSE}
 print(graf.igralci)
@@ -131,8 +131,8 @@ print(graf.igralci)
 
 Na koncu sem hotel poiskati še neko zanimivo opažanje iz nogometnega tržišča.
 Zato sem naredil zemljevid, ki prikazuje število vseh prodanih prvoligaških tekem v vsaki zvezni deželi Nemčije. Prav tako pa sem na zemljevid vključil tudi razporeditev vseh nemških prvoligaških klubov.
-Zares presenetljiv je podatek kako zelo je nogomet koncentriran na zahodni in južni del Nemčije, se pravi na Bavarsko in pa na Severno Porenje-Vestfalijo. Večinoma klubov v Nemčiji je razporejenih v tem delu. Če bi narisali ločnico po sredini Nemčije, bi videli blazno odstopanje med zahodom in vzhodom.
-Iz tega opažanja vidimo, kako tesno je nogomet povezan z gospodarstvom in industrijo. Nemški nogomet je koncentriran, kjer sta koncentrirana gospodarstvo in industrija.
+Zares presenetljiv je podatek, kako je nogomet koncentriran na zahodnem in južnem delu Nemčije, se pravi na Bavarskem in pa v Severnem Porenju-Vestfaliji. Večinoma klubov v Nemčiji je razporejenih v tem delu. Če bi narisali ločnico po sredini Nemčije, bi videli blazno odstopanje v prodajih kart in številu prvoligaških klubov med vzhodom in zahodom.
+Iz tega opažanja vidimo, kako tesno je nogomet povezan z gospodarstvom in industrijo. Nemški nogomet je koncentriran, kjer sta koncentrirana nemško  gospodarstvo in industrija.
 
 
 ```{r zem.obisk, echo=FALSE, message=FALSE, warning=FALSE}
@@ -144,24 +144,21 @@ print(zem.obisk)
 
 # Napredna analiza podatkov
 
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
+Pri delu seminarske naloge s pomočjo programa R, sem izvedel mnogo zanimivih podatkov o katerih se prej sploh nisem spraševal.
+Res zanimiv je podatek kako zelo je pomembna starost za samo tržno vrednost igralca. V letih 24-29 je nogometaš tržno najbolj vreden, tako da bi morali takrat nogometaši največ delati na sami medijski prepoznavnosti in s pogodbami poizkušali skleniti čim boljše posle. Vidimo namreč, da je sama doba tržne vrednosti nogometaša zelo kratka (okoli 5 let) in v tem času bi moral nogometaš zaslužiti čimveč, da bi privarčeval denar za celotno nadaljne življenje po poklicni karieri.
+Drug zanimiv podatek je kako je vrednost igralcev koncentrirana na določenih pozicijah. S tem lahko vidimo, da bo npr. branilec oziroma vratar že od samega začetka kariere pogojen z bistveno nižjo ceno, ker pač trg tako določa same cene (obstajajo izjeme, vendar te so redke). Vidimo lahko da so najbolje plačani napadalci in pa krilni igralci. 
+Nogomet je eden izmed najbolj gledanih in priljubljenih športov prav zaradi tega, ker ni telesno pogojen šport( glede višine, mase, maratonske vzdržljivosti...), za razliko od košarke, odbojke, rokometa, teka in podobnih športov.
+Ampak tudi pri nogometu počasi vidimo, da se denar koncentrira na pozicijah, katere so vse bolj telesno pogojene. Moderni krilni nogometaši so namreč povečini zelo hitri nogometaši( Mbappe in podobni krilni igralci imajo približno enak čas na 100m kot Usain Bolt), za kar mora biti človek rojen in je prav tako genetsko pogojeno. Tako vidimo, da tudi v nogometu vse bolj do izraza in posledično višje cene prihajajo atributi kateri so genetsko pogojeni.
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina = names(skupine),
-                                     skupina = factor(skupine)), by = "obcina")
-, aes(x = povrsina, y = naselja, color = skupina, size = prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color = guide_legend(title = "Skupina"),
-         size = guide_legend(title = "Prebivalci (* 1000)"))
-```
 
 ***
 
+
+Za zaključek sem hotel narediti še zanimivo napredno analizo s pomočjo Shiny-ja, tako da sem analiziral višine povprečnih  bruto plač vseh občin Slovenije. To sem analiziral zato, da bi ljudje videli nekakšno primerjavo med plačami poklicnih nogometašev in povpreno plačo ljudi nasplošno. Ugotovili smo, da se povprečna plača ljudi giblje med 800 in 1800 evri, odvisno od regije (kar je lepo razvidno v spodnji Shiny aplikaciji;občine kot so Kostel in Osilnica imajo minimalno plačo medtem, ko imajo središča statističnih regij kot so Ljubljana, Maribor, Novo Mesto malce višjo plačo. Presenetljivo odstopa občina Cerklje na Gorenjskem, ki ima vsako leto najvišjo povprečno bruto plačo na prebivalca. To je zaradi prisitnosti letališča Brnik.). Če si pogledamo cene nogometašev in pa plače nogometašev v npr. italijanski ligi, ki znašajo okoli 400000 evrov letno(bruto plača), vidimo to ekstremno razliko. Povprečen nogometaš v italijanski ligi bo tako v dveh ali treh sezonah zaslužil toliko, kot bo zaslužil povprečen delavec v celem življenju. Ob taki misli se človek kar zamisli in se vpraša kako je to mogoče.
+V tej primerjavi se mi zdi presenetljivo, kako je mogoče, da nekateri poklicni nogometaši ob tako zelo veliki plači, svojega poklica ne jemljejo resno in niso stoodstotno predani svojemu delu oziroma ne pokažejo svojega maksimuma na vseh tekmah.
+
+  
 ```{r shiny, echo = FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
 ```
