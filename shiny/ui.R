@@ -1,5 +1,5 @@
 library(shiny)
-library(DT)
+library(datasets)
 
 shinyUI(fluidPage(
   titlePanel("Povprečne plače po občinah Slovenije"), 
