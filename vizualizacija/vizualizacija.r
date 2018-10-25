@@ -62,11 +62,14 @@ zem.obisk
 
 
 slovenija <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-                          "OB_OB", encoding = "UTF-8") %>%
-  pretvori.zemljevid()
+                          "OB/OB", encoding = "Windows-1250")
+levels(slovenija$OB_UIME) <- levels(slovenija$OB_UIME) %>%
+  { gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
+slovenija$OB_UIME <- factor(slovenija$OB_UIME, levels = levels(placa$obcina))
+slovenija <- pretvori.zemljevid(slovenija)
 
-placa_2010 <- ggplot() + geom_polygon(data = placa1 %>% 
-                                       right_join(slovenija, by = c("obcina" = "NAME_1")),
+placa_2010 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2010) %>% 
+                                       right_join(slovenija, by = c("obcina" = "OB_UIME")),
                                      aes(x = long, y = lat, group = group, fill = dohodek)) +
                                       ggtitle("Povprečna plača v letu 2010 po občinah")
 
