@@ -203,6 +203,7 @@ ggplot(igralci, aes(asistence, zadeti.goli, color = pozicije$cluster)) +
   ggtitle("Izračun igralnih pozicij s pomočjo grupiranja") + xlab("Asistence") + ylab("Zadeti goli") +
   geom_point() + 
   scale_fill_manual(name="Tip igralne pozicije", values=c("red","green","blue"), labels=c("obramba", "sredina", "napad"))
+###tukaj je treba uporabiti scale_color_manual namesto scale_fill_manual
 
 ### Opomba : kot napadalne pozicije interpretiramo: Centre forward, Second striker;
 # kot sredina : attacking midfield, central midfield, left winger, right winger;
