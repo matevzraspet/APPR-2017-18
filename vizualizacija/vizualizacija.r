@@ -248,4 +248,3 @@ ggplot(data=igralci, aes(x=asistence,y=zadeti.goli)) +
 
 
 
->>>>>>> e3fd66657062861e520cfb894b5b43bdb7316723
