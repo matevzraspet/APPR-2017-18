@@ -221,16 +221,16 @@ library(ggplot2)
 
 voronoi <- deldir(igralci$asistence, igralci$zadeti.goli)
 
-#Now we can make a plot
+#sedaj lahko narišemo graf
 ggplot(data=igralci, aes(x=asistence,y=zadeti.goli)) +
-  #Plot the voronoi lines
+  #narišemo voronojeve črte
   geom_segment(
     aes(x = x1, y = y1, xend = x2, yend = y2),
     size = 2,
     data = voronoi$dirsgs,
     linetype = 1,
     color= "#FFB958") + 
-  #Plot the points
+  #narišemo točke
   geom_point(
     fill=rgb(70,130,180,255,maxColorValue=255),
     pch=21,
