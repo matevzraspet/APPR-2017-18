@@ -187,3 +187,53 @@ placa_2017 <- ggplot() + geom_polygon(data = placa %>% filter(leto == 2017) %>%
   ggtitle("Povprečna plača v letu 2010 po občinah")
 placa_2017
 
+
+
+
+#############################
+#Grupiranje, izračun igralnih pozicij s pomočjo grupiranja
+### Hotel sem pogledati, če lahko iz danih golov in asistenc igralca izluščimo igralno pozicijo oziroma tip pozicije (napad,sredina,obramba)
+
+
+set.seed(20)
+pozicije <- kmeans(igralci[,c(6,8)], 3, nstart = 20)
+pozicije
+
+pozicije$cluster <- as.factor(pozicije$cluster)
+ggplot(igralci, aes(asistence, zadeti.goli, color = pozicije$cluster)) +
+  ggtitle("Izračun igralnih pozicij s pomočjo grupiranja") + xlab("Asistence") + ylab("Zadeti goli") +
+  geom_point() +
+  scale_color_manual(name="Tip igralne pozicije", values=c("red","green","blue"), labels=c("obramba", "sredina", "napad"))
+
+### Opomba : kot napadalne pozicije interpretiramo: Centre forward, Second striker;
+# kot sredina : attacking midfield, central midfield, left winger, right winger;
+# kot obramba : centre back, defensive midfield, goalkeeper, right back, left back
+
+### Dejanske pozicije glede na statistiko
+
+ggplot(igralci, aes(asistence, zadeti.goli, color = pozicija)) +
+  ggtitle("Igralne pozicije") + xlab("Asistence") + ylab("Zadeti goli") +
+  geom_point() 
+
+
+library(deldir)
+library(ggplot2)
+
+
+voronoi <- deldir(igralci$asistence, igralci$zadeti.goli)
+
+#Now we can make a plot
+ggplot(data=igralci, aes(x=asistence,y=zadeti.goli)) +
+  #Plot the voronoi lines
+  geom_segment(
+    aes(x = x1, y = y1, xend = x2, yend = y2),
+    size = 2,
+    data = voronoi$dirsgs,
+    linetype = 1,
+    color= "#FFB958") + 
+  #Plot the points
+  geom_point(
+    fill=rgb(70,130,180,255,maxColorValue=255),
+    pch=21,
+    size = 4,
+    color="#333333") 
