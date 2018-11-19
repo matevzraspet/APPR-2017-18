@@ -189,10 +189,6 @@ placa_2017
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e3fd66657062861e520cfb894b5b43bdb7316723
 #############################
 #Grupiranje, izračun igralnih pozicij s pomočjo grupiranja
 ### Hotel sem pogledati, če lahko iz danih golov in asistenc igralca izluščimo igralno pozicijo oziroma tip pozicije (napad,sredina,obramba)
@@ -240,8 +236,6 @@ ggplot(data=igralci, aes(x=asistence,y=zadeti.goli)) +
     pch=21,
     size = 4,
     color="#333333") 
-<<<<<<< HEAD
-=======
 
 
 
